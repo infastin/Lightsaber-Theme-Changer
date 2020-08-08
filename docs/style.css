@@ -24,6 +24,8 @@ body {
   display: -ms-flexbox;
   display: flex;
   background-color: var(--theme1);
+  -webkit-transition: background-color 200ms;
+  transition: background-color 200ms;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;

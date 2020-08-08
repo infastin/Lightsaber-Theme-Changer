@@ -8,6 +8,7 @@ body {
     overflow: hidden;
     display: flex;
     background-color: getv(theme1);
+    transition: background-color 200ms;
     justify-content: center;
     align-items: center;
 }
