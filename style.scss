@@ -1,0 +1,106 @@
+@import 'variables';
+
+@function getv($var) {
+    @return var(--#{$var});
+}
+
+.switch-container {
+    background-color: getv(theme2);
+    padding: 20px;
+    border-radius: 3px;
+    transition: background-color 200ms;
+    box-shadow: 0 6.4px 14.4px 0 rgba(0,0,0,.132), 
+                0 1.2px 3.6px 0 rgba(0,0,0,.108);;
+}
+
+.switch {
+    display: flex;
+    align-items: center;
+    grid-column-gap: 10px;
+    user-select: none;
+
+    .switch-body {
+        width: 25px;
+        padding: 5px;
+        border: 3px solid getv(theme-dl);
+        border-radius: 10px;
+        display: flex;
+        box-shadow: 0 6.4px 14.4px 0 rgba(0,0,0,.132), 
+                    0 1.2px 3.6px 0 rgba(0,0,0,.108);
+        transition: border-color 200ms;
+        cursor: pointer;
+
+        .switch-thumb {
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+            margin-left: 0;
+            background-color: getv(theme-dl);
+            transition-property: margin-left, background-color;
+            transition-duration: 200ms;
+        }
+    }
+
+    .switch-label {
+        cursor: pointer;
+        font-weight: 600;
+        color: getv(theme-dl);
+        transition: color 200ms;
+    }
+
+    &.switch-theme {
+        .switch-body {
+            border: 3px solid getv(primary);
+
+            .switch-thumb {
+                background-color: getv(primary);
+            }
+        }
+
+        .lightsaber {
+            width: 32px;
+            height: 32px;
+            background-size: cover;
+            transition: background-image 200ms linear;
+            position: relative;
+
+            &:after {
+                content: '';
+                width: 32px;
+                height: 32px;
+                position: absolute;
+                background-size: cover;
+                transform: scale(0) translateZ(0);
+                transition: transform 200ms;
+            }
+
+            &.dark-theme {
+                background-image: url(img/black2.png);
+
+                &:after {
+                    background-image: url(img/black1.png);
+                }
+            }
+
+            &.white-theme {
+                background-image: url(img/white2.png);
+
+                &:after {
+                    background-image: url(img/white1.png);
+                }
+            }
+        }
+
+        &.active > .white-theme, &:not(.active) > .dark-theme {
+            color: getv(primary);
+
+            &.lightsaber:after {
+                transform: scale(1) translateZ(0);
+            }
+        }
+    }
+
+    &.active > .switch-body > .switch-thumb {
+        margin-left: 15px;
+    }
+}

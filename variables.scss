@@ -1,0 +1,19 @@
+html {
+    --green: #00ad56;
+    --green2: #8cbd18;
+    --red: #d13438;
+    --red2: #ca5010;
+    --theme-dl: #808080;
+
+    &[data-theme="default"] {
+        --primary: #ffaa44;
+        --theme1: #292827;
+        --theme2: #484644;
+    }
+
+    &[data-theme="white"] {
+        --primary: #0078d4;
+        --theme1: #edebe9;
+        --theme2: #fff;
+    }
+}
